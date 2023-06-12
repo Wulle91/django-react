@@ -24,7 +24,8 @@ class ProfileList(generics.ListAPIView):
         'owner__followed__created_at',
     ]
     filterset_fields = [
-        'owner__following__followed__profile'
+        'owner__following__followed__profile',
+        'owner__followed__owner__profile'
     ]
     
     def perform_create(self, serializer):
