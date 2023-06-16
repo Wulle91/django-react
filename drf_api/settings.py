@@ -59,7 +59,7 @@ SECRET_KEY = 'django-insecure-1-5dzldw1%$@vxxet82%iiu2#!3aaf)jw-$g9nnvdouo9iqe27
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
+ALLOWED_HOSTS = ['8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'pythondjangorest.herokuapp.com/']
 
 
 # Application definition
