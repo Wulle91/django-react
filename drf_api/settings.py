@@ -113,8 +113,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'drf_api.urls'
 
 CORS_ALLOWED_ORIGINS = [
-    'https://momentos-4387c0084266.herokuapp.com/signup',
-    'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io/signup',
+    'https://momentos-4387c0084266.herokuapp.com',
+    'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io',
     # Add more allowed origins as needed
 ]
 
@@ -137,6 +137,7 @@ CORS_ALLOW_HEADERS = [
     'user-agent',
     'x-csrftoken',
     'x-requested-with',
+    'Access-Control-Allow-Origin',
 ]
 
 TEMPLATES = [
