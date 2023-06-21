@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
 	'dj_rest_auth',
+    'corsheaders',
     'django.contrib.sites',
 	'allauth',
 	'allauth.account',
@@ -106,9 +107,37 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'drf_api.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    'https://momentos-4387c0084266.herokuapp.com/signup',
+    'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io/signup',
+    # Add more allowed origins as needed
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 
 TEMPLATES = [
     {
