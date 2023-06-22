@@ -21,6 +21,9 @@ if os.path.isfile('env.py'):
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
 }
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 MEDIA_URL= '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,6 +45,10 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer'
     ]
     
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+         os.environ.get('CLIENT_ORIGIN')
+     ]
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
@@ -62,14 +69,14 @@ REST_AUTH_SERIALIZERS = {
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1-5dzldw1%$@vxxet82%iiu2#!3aaf)jw-$g9nnvdouo9iqe27'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'pythondjangorest-f503576af96c.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
 
-
+CSRF_TRUSTED_ORIGINS = ['https://pythondjangorest-f503576af96c.herokuapp.com', 'https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
 # Application definition
 
 INSTALLED_APPS = [
@@ -111,34 +118,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'drf_api.urls'
-
-CORS_ALLOWED_ORIGINS = [
-    'https://momentos-4387c0084266.herokuapp.com',
-    'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io',
-    # Add more allowed origins as needed
-]
-
-CORS_ALLOW_METHODS = [
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS',
-]
-
-CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-    'Access-Control-Allow-Origin',
-]
 
 CORS_ALLOW_CREDENTIALS = True
 
