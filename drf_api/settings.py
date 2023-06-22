@@ -15,7 +15,7 @@ import os
 import dj_database_url
 import re
 
-if os.path.isfile('env.py'):
+if os.path.exists('env.py'):
     import env
 
 CLOUDINARY_STORAGE = {
@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS = ['https://pythondjangorest-f503576af96c.herokuapp.com', 'https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'https://pythondjangorest-f503576af96c.herokuapp.com']
 # Application definition
 
 MEDIA_URL= '/media/'
@@ -95,13 +95,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
-	'dj_rest_auth',
-    'corsheaders',
+    'dj_rest_auth',
     'django.contrib.sites',
-	'allauth',
-	'allauth.account',
-	'allauth.socialaccount',
-	'dj_rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'corsheaders',
     'profiles',
     'posts',
     'comments',
