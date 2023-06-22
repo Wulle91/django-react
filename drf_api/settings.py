@@ -24,10 +24,25 @@ CLOUDINARY_STORAGE = {
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
+
+CSRF_TRUSTED_ORIGINS = ['https://pythondjangorest-f503576af96c.herokuapp.com', 'https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
+# Application definition
+
 MEDIA_URL= '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+         os.environ.get('CLIENT_ORIGIN')
+     ]
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENICATION_CLASSES': [(
@@ -40,20 +55,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %b %Y',
 }
+
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer'
     ]
-    
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-         os.environ.get('CLIENT_ORIGIN')
-     ]
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
+
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
@@ -72,12 +79,9 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS = ['https://pythondjangorest-f503576af96c.herokuapp.com', 'https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
