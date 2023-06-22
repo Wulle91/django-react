@@ -65,7 +65,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = 'django-insecure-1-5dzldw1%$@vxxet82%iiu2#!3aaf)jw-$g9nnvdouo9iqe27'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'pythondjangorest-f503576af96c.herokuapp.com']
 
