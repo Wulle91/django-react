@@ -24,7 +24,7 @@ CLOUDINARY_STORAGE = {
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), 'pythondjangorest-f503576af96c.herokuapp.com', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
+ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'https://pythondjangorest-f503576af96c.herokuapp.com']
 # Application definition
