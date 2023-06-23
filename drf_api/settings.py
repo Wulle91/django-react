@@ -15,7 +15,7 @@ import os
 import dj_database_url
 import re
 
-if os.path.exists('env.py'):
+if os.path.isfile('env.py'):
     import env
 
 CLOUDINARY_STORAGE = {
@@ -26,13 +26,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'https://pythondjangorest-f503576af96c.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'https://pythondjangorest-f503576af96c.herokuapp.com', 'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io/']
 # Application definition
-
 MEDIA_URL= '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
@@ -55,12 +55,10 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %b %Y',
 }
-
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer'
     ]
-
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
@@ -79,9 +77,12 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
+ALLOWED_HOSTS = ['8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', '8000-codeinstitutesol-drfapi-3qx8cdy9u69.ws-eu100.gitpod.io', 'https://34865-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io/']
 
 
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -95,18 +96,18 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
-    'dj_rest_auth',
+	'dj_rest_auth',
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'dj_rest_auth.registration',
-    'corsheaders',
+	'allauth',
+	'allauth.account',
+	'allauth.socialaccount',
+	'dj_rest_auth.registration',
     'profiles',
     'posts',
     'comments',
     'likes',
     'followers',
+    'corsheaders',
 ]
 
 SITE_ID = 1
@@ -118,7 +119,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'drf_api.urls'
