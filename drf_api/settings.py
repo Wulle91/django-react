@@ -56,7 +56,7 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%d %b %Y',
 }
 if 'DEV' not in os.environ:
-    REST_FRAMEWORK['DEFAULT_RENDER_CLASSES'] = [
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer'
     ]
 
@@ -77,7 +77,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', '8000-codeinstitutesol-drfapi-3qx8cdy9u69.ws-eu100.gitpod.io', 'https://34865-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io/']
 
