@@ -37,8 +37,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
          os.environ.get('CLIENT_ORIGIN'),
-         'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io/',
-         'https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io/'
+         'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io',
+         'https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io'
      ]
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
