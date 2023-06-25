@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'https://pythondjangorest-f503576af96c.herokuapp.com', 'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io/', 'https://momentos-4387c0084266.herokuapp.com/']
+CSRF_TRUSTED_ORIGINS = ['https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'https://pythondjangorest-f503576af96c.herokuapp.com', 'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io', 'https://momentos-4387c0084266.herokuapp.com']
 # Application definition
 MEDIA_URL= '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
