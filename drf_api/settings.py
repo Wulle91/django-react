@@ -127,6 +127,8 @@ ROOT_URLCONF = 'drf_api.urls'
 
 CORS_ALLOW_CREDENTIALS = True
 
+SESSION_COOKIE_NAME = ''
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
