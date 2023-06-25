@@ -36,21 +36,39 @@ def logout_route(request):
         secure=JWT_AUTH_SECURE,
     )
     response.set_cookie(
-        key='sessionid',
-        value='',
+        key=SESSION_COOKIE_SAMESITE,
+        value='Lax',
         httponly=True,
         expires='Thu, 01 Jan 1970 00:00:00 GMT',
         max_age=0,
-        samesite=SESSION_COOKIE_SAMESITE,
-        secure=SESSION_COOKIE_SECURE,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
     )
     response.set_cookie(
-        key='csrftoken',
+        key=SESSION_COOKIE_SECURE,
         value='',
+        httponly=False,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
+    )
+    response.set_cookie(
+        key=CSRF_COOKIE_SAMESITE,
+        value='Lax',
         httponly=True,
         expires='Thu, 01 Jan 1970 00:00:00 GMT',
         max_age=0,
-        samesite=CSRF_COOKIE_SAMESITE,
-        secure=CSRF_COOKIE_SECURE,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
+    )
+    response.set_cookie(
+        key=CSRF_COOKIE_SECURE,
+        value='Lax',
+        httponly=False,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
     )
     return response
