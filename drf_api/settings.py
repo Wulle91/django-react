@@ -63,7 +63,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True
 
-if user_logged_in:
+if user.is_authenticated:
     SESSION_COOKIE_SAMESITE = 'Lax'
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SAMESITE = 'Lax'
