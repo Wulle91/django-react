@@ -10,13 +10,12 @@ from .settings import (
 @api_view()
 def root_route(request):
     return Response({
-        "message": "Wellcome to my drf API"
+        "message": "Welcome to my DRF API"
     })
     
 @api_view(['POST'])
 @permission_classes((permissions.AllowAny,))
 def logout_route(request):
-    JWT_AUTH_COOKIE = 
     response = Response()
     response.set_cookie(
         key=JWT_AUTH_COOKIE,
@@ -54,7 +53,4 @@ def logout_route(request):
         samesite=CSRF_COOKIE_SAMESITE,
         secure=CSRF_COOKIE_SECURE,
     )
-    
     return response
-
-
