@@ -3,7 +3,8 @@ from rest_framework import permissions
 from rest_framework.response import Response
 from .settings import (
     JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, JWT_AUTH_SAMESITE,
-    JWT_AUTH_SECURE,
+    JWT_AUTH_SECURE, SESSION_COOKIE_SAMESITE, SESSION_COOKIE_SECURE,
+    CSRF_COOKIE_SAMESITE, CSRF_COOKIE_SECURE,
 )
 
 @api_view()
@@ -15,6 +16,7 @@ def root_route(request):
 @api_view(['POST'])
 @permission_classes((permissions.AllowAny,))
 def logout_route(request):
+    JWT_AUTH_COOKIE = 
     response = Response()
     response.set_cookie(
         key=JWT_AUTH_COOKIE,
@@ -34,6 +36,25 @@ def logout_route(request):
         samesite=JWT_AUTH_SAMESITE,
         secure=JWT_AUTH_SECURE,
     )
+    response.set_cookie(
+        key='sessionid',
+        value='',
+        httponly=True,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=SESSION_COOKIE_SAMESITE,
+        secure=SESSION_COOKIE_SECURE,
+    )
+    response.set_cookie(
+        key='csrftoken',
+        value='',
+        httponly=True,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=CSRF_COOKIE_SAMESITE,
+        secure=CSRF_COOKIE_SECURE,
+    )
+    
     return response
 
 
