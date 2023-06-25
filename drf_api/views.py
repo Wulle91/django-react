@@ -15,7 +15,6 @@ def root_route(request):
 @api_view(['POST'])
 @permission_classes((permissions.AllowAny,))
 def logout_route(request):
-    JWT_AUTH_COOKIE = 
     response = Response()
     response.set_cookie(
         key=JWT_AUTH_COOKIE,
