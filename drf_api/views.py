@@ -6,6 +6,10 @@ from rest_framework.response import Response
 @permission_classes((permissions.AllowAny,))
 def logout_route(request):
     response = Response()
+    response.delete_cookie(SESSION_COOKIE_SAMESITE)
+    response.delete_cookie(SESSION_COOKIE_SECURE)
+    response.delete_cookie(CSRF_COOKIE_SAMESITE)
+    response.delete_cookie(CSRF_COOKIE_SECURE)
     response.set_cookie(
         key='JWT_AUTH_COOKIE_NAME',
         value='',
