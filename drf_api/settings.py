@@ -22,15 +22,29 @@ CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
 }
 
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-wulle91-djangoreact-5643y6znzg1.ws-eu99.gitpod.io', '8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'https://pythondjangorest-f503576af96c.herokuapp.com', 'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io', 'https://momentos-4387c0084266.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io', 'https://pythondjangorest-f503576af96c.herokuapp.com']
 # Application definition
 MEDIA_URL= '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+         os.environ.get('CLIENT_ORIGIN'),
+         'https://3000-wulle91-momentss-jgf77wfe8mu.ws-eu100.gitpod.io',
+         'https://8000-wulle91-djangoreact-5643y6znzg1.ws-eu100.gitpod.io',
+     ]
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
 
 
 REST_FRAMEWORK = {
@@ -60,7 +74,6 @@ JWT_AUTH_SAMESITE = 'None'
 
 # CSRF_COOKIE_SAMESITE = 'None'
 # CSRF_COOKIE_SECURE = True
-
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'
@@ -109,23 +122,12 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-         os.environ.get('CLIENT_ORIGIN'),
-     ]
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
-
 
 ROOT_URLCONF = 'drf_api.urls'
 
